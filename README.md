@@ -15,7 +15,7 @@ Project management principles were applied throughout the Live Project using Agi
 - __APIs__: Fake Tea API (display data)
 - __Libraries__: 
     - BeautifulSoup (web scraping) 
-    - TextBlob (part-of-speech tagging) 
+    - TextBlob [with textblob.download_corpora] (part-of-speech tagging) 
     - Regex (search pattern) 
     - JSON (structure, transmit)
 - __Version Control & Project Management__: Git, Azure DevOps
