@@ -6,7 +6,7 @@ __Tech Stack__: Django, Python, JavaScript, HTML/CSS, Bootstrap, Crispy Forms, B
 
 The Teas App is a desktop web application that assists users in documenting, listing, managing, and rating their own collection of different types of teas. Primarily accomplished through a solid foundation in CRUD functionality, the app allows users to manage database operations (add, edit, view, sort, delete) through the webapp interface. Additionally, it allows users to search through both web-scraped site data and API returned data (in several different views) and preloads selected rows' data onto the create page to ease in record creation. 
 
-Project management principles were applied throughout the Live Project using Agile Methodolgies' Scrum framework; we had sprint planning and spring retrospective meetings, daily stand-ups, documented progress through user stories, and all work was accomplished within one sprint. Each team memeber was responsible for crafting their app, tracking their branches through version control (commiting, pushing, creating pull requests) and updating tickets within the Azure DevOps platform. 
+Project management principles were applied throughout the Live Project using Agile Methodologies' Scrum framework; we had sprint planning and sprint retrospective meetings, daily stand-ups, documented progress through user stories, and all work was accomplished within one sprint. Each team member was responsible for crafting their app, tracking their branches through version control (committing, pushing, creating pull requests) and updating tickets within the Azure DevOps platform. 
 
 ## Core Technologies
 - __Backend__: Django, Python
@@ -32,15 +32,15 @@ Project management principles were applied throughout the Live Project using Agi
 - Field Auto-Preloading: On the web-scraped site page, users can select the names of any tea and that tea data will automatically load into the associated fields of the Create page, which the user is redirected to. 
 
 ## User Stories
-1. [Basic App Structure & Front-End Work](#Basic-App-Structure-&-Front-End-Work)
-1. [Model Creation](#Model-Creation)
-1. [Display All Items](#Display-All-Items)
-1. [Details, Edit, And Delete Functions](#Details,-Edit,-And-Delete-Functions)
-1. [API (Connect & Parse)](#API-(Connect-&-Parse))
-1. [BeautifulSoup](#BeautifulSoup)
-1. [Front-End Improvements](#Front-End-Improvements)
-1. [Save Scraped Results](#Save-Scraped-Results)
-1. [TextBlob & BugFix](#TextBlob-&-BugFix)
+1. [Basic App Structure & Front-End Work](#basic-app-structure--front-end-work)
+1. [Model Creation](#model-creation)
+1. [Display All Items](#display-all-items)
+1. [Details, Edit, And Delete Functions](#details-edit-and-delete-functions)
+1. [API (Connect & Parse)](#api-connect--parse)
+1. [BeautifulSoup](#beautifulsoup)
+1. [Front-End Improvements](#front-end-improvements)
+1. [Save Scraped Results](#save-scraped-results)
+1. [TextBlob & BugFix](#textblob--bugfix)
 
 ### Basic App Structure & Front-End Work
 The first step was to create a new app within the Django project, and get it to display a homepage with basic content. After registering the new app in Django's settings.py, I created a base HTML file (that all other pages would inherit styling from) and an HTML file for the homepage. I registered the url in urls.py, created a basic function to display the homepage in views.py, and added significant responsive styling to ensure a clean and consistent look in navbar items, footer, background and title. Resting and hover state colors were based around the theme of "tea" and image-links were added to the footer to link to my GitHub, LinkedIn, and my personal email. 
@@ -48,7 +48,7 @@ The first step was to create a new app within the Django project, and get it to 
 ![Homepage image with Home Hovered](images/NHill-LP-Homepage.png)
 
 ### Model Creation
-Next, I was tasked with creating a database model for teas and adding the ability to create new (database records for) teas. Django's ORM (in models.py) was used to define the model and migrations were made to generate (and update) the database table. I chose to use subclasses to list IntegerChoice options for organizaiton and general readability.
+Next, I was tasked with creating a database model for teas and adding the ability to create new (database records for) teas. Django's ORM (in models.py) was used to define the model and migrations were made to generate (and update) the database table. I chose to use subclasses to list IntegerChoice options for organization and general readability.
 
 ```python
 class Teas(models.Model):
@@ -84,7 +84,7 @@ class Teas(models.Model):
     tea = models.Manager()
 ```
 
-I then set out to build a form that would reflect all database elements as input fields and a templage page to display them. After struggling with layouts not aligning with my desires, I opted to use Django's Crispy Forms which simplified rendering and also allowed the application of Bootstrap directly, which enhanced the form's aesthetic. Eager to include widgets, I added one that turns a dropdown into Radio Buttons and another to adjust the sizing of my description field for both function and overall look. 
+I then set out to build a form that would reflect all database elements as input fields and a template page to display them. After struggling with layouts not aligning with my desires, I opted to use Django's Crispy Forms which simplified rendering and also allowed the application of Bootstrap directly, which enhanced the form's aesthetic. Eager to include widgets, I added one that turns a dropdown into Radio Buttons and another to adjust the sizing of my description field for both function and overall look. 
 
 ```python
 #Combines the built-in ModelForm structure with the full Teas database table
@@ -123,7 +123,7 @@ The next request was to create a page that would display all data within the dat
 
 ![View Page with table image](images/NHill-LP-ViewTable-sort.gif)
 
-An optional addition I was particularly happy with was the sort feature. I turned table headers into links that, when clicked, would organize all data into ascending or alphabetical order. Re-clicking that header would reverses the order to descending. I used the `order_by` method for Django QuerySets, url manipulation, and Django template logic to accomplish this functionality. 
+An optional addition I was particularly happy with was the sort feature. I turned table headers into links that, when clicked, would organize all data into ascending or alphabetical order. Re-clicking that header reverses the order to descending. I used the `order_by` method for Django QuerySets, url manipulation, and Django template logic to accomplish this functionality. 
 
 ```html
 <table class="table table-bordered table-striped"> <!--Adds table styling (borders, striped offset background colors, appropriate spacing)-->
@@ -163,9 +163,9 @@ An optional addition I was particularly happy with was the sort feature. I turne
 ```
 
 ### Details, Edit, And Delete Functions
-The next task was to build a Detais page that would display all data for a single selected database record. It felt only natural to link to this new page from the Views page, as it was showing all database records already. After adding to the urls and views.py files, I added a template that extended nearly all of its design from the Create page, and made a link on the View page table rows that would pull the select rows' primary key (unique identifier) to the new Details page. As this new Details page closely resembled the Create page, I differentiated it by emcopassing the table in a fieldset element set with an `inert` attribute, which showed record data in a read-only state (the button was also unique in location and text).  
+The next task was to build a Details page that would display all data for a single selected database record. It felt only natural to link to this new page from the Views page, as it was showing all database records already. After adding to the urls and views.py files, I added a template that extended nearly all of its design from the Create page, and made a link on the View page table rows that would pull the select rows' primary key (unique identifier) to the new Details page. As this new Details page closely resembled the Create page, I differentiated it by encompassing the table in a fieldset element set with an `inert` attribute, which showed record data in a read-only state (the button was also unique in location and text).  
 
-I used this Details page to leapfrog right into the next request, enabling edit and delete funcionality on a separate page. Following similar steps as above (with notable differences in the views.py), the Details page button now links to the Edit/Delete page. 
+I used this Details page to leapfrog right into the next request, enabling edit and delete functionality on a separate page. Following similar steps as above (with notable differences in the views.py), the Details page button now links to the Edit/Delete page. 
 
 ```python
 def tea_edit(request, pk): #Defines the function and the parameters used (request is part of the HTTPrequest)
@@ -192,12 +192,12 @@ def tea_delete(request, pk):
     return render(request, "Tea_edit.html", context) #Returns the request on the Tea_edit page with the dictionary variable information above
 ```
 
-Users can make changes to an existing record, press the "Update" button and see their changes immediately upon redirect to the Details page. Conversely, users can select the Delete button, click through the delete confirmation, and remove the record from the database. I used the HTML event attribute `onsubmit="return confirm(...)"` to apply JavaScript to this modal, as it seem the most straightforward way. I was pleased with how it turned out. 
+Users can make changes to an existing record by pressing the "Update" button; they will see their changes immediately upon redirect to the Details page. Conversely, users can select the Delete button, click through the delete confirmation, and remove the record from the database. I used the HTML event attribute `onsubmit="return confirm(...)"` to apply JavaScript to this modal, as it seemed the most straightforward way. I was pleased with how it turned out. 
 
 ![Edit, Delete, and Details Pages with functionality image](images/NHill-LP-Edit-Delete.gif)
 
 ### API (Connect & Parse)
-The next section dealt with integrating a selected third-party API to display the API's JSON response. After creating a new template (API Search page), I used a new views.py function to connect to my chosen API and print it to the terminal (for testing). I had previously saved 5+ potential RESTful API's regarding tea to use at this point, but only 1 of them was functional, and it had virutally no documentation--its response was simply a list of fake tea shop data. After many hiccups, I got the API showing the 4 dictionary items that most mirrored my database model fields in JSON format on the search template. 
+The next section dealt with integrating a selected third-party API to display the API's JSON response. After creating a new template (API Search page), I used a new views.py function to connect to my chosen API and print it to the terminal (for testing). I had previously saved 5+ potential RESTful API's regarding tea to use at this point, but only 1 of them was functional, and it had virtually no documentation--its response was simply a list of fake tea shop data. After many hiccups, I got the API showing the 4 dictionary items that most mirrored my database model fields in JSON format on the search template. 
 
 ```python
 def api_tea_search(request):
@@ -358,7 +358,7 @@ input.addEventListener("keydown", function(event) { //Adding event listener for 
 ### BeautifulSoup
 I was then tasked with finding, web-scraping, parsing, and displaying tea data from an external website using the BeautifulSoup library. I decided to emulate the view switching and search functionality of the API Search page, so I duplicated that HTML template and made changes as necessary to my new (Site Info) one. I located the section of site HTML I wanted to scrape, but there were roadblocks: all 100 list items were broken up into 11 different rows (with their own row IDs). After parsing the HTML and rebuilding a new list of all compiled list items, I could create the "List" view for all items. 
 
-Getting the table view, on the other hand, required creativity; the returned data was 100 HTML list items that were structured similarly. I decided to use regex to take advantage of those structural similaries after converting each list item to plain text. I then extracted the captured word-group into a variable, assigned that variable to the value of a dictionary key (matching my model name), composed an amalgam of all 4 captured objects into a list, and then appended that list to a new dictionary; the name, origin, and description for all 100 items were attained in this manner. Simple HTML formatting on the template was used to display these new dictionary objects in table format.
+Getting the table view, on the other hand, required creativity; the returned data was 100 HTML list items that were structured similarly. I decided to use regex to take advantage of those structural similarities after converting each list item to plain text. I then extracted the captured word-group into a variable, assigned that variable to the value of a dictionary key (matching my model name), composed an amalgam of all 4 captured objects into a list, and then appended that list to a new dictionary; the name, origin, and description for all 100 items were attained in this manner. Simple HTML formatting on the template was used to display these new dictionary objects in table format.
 
 Reusing the same HTML element IDs allowed me to apply both the view switching functionality and the table search functionality JavaScript without any additional work. 
 
@@ -398,7 +398,7 @@ def tea_site_info(request):
 ```
 
 ### Front-End Improvements
-The next task was to update the Front-End aspects of the site, but as I had built the site to be visually appealing, readable, responsive, and user-friendly (keeping design elements consistent with each ticket), there was little left to do. However, there was a design issue that bothered me, and I chose to address it--the footer, while small, took up too much space on smaller screens and was always showing. I had attempted to address this previously multiple ways (JavaScript to display footer only at page bottom, z-index tweaking, change position property), but all had issues I prefered to avoid. I decided to use JavaScript to adjust the footer's z-index only once it reached the bottom of the page (through scrolling or otherwise). This allowed for the footer to not block page content on smaller screen, but also allowed footer links to be interacted with (instead of non-functional). I was over the moon that this worked out so well. 
+The next task was to update the Front-End aspects of the site, but as I had built the site to be visually appealing, readable, responsive, and user-friendly (keeping design elements consistent with each ticket), there was little left to do. However, there was a design issue that bothered me, and I chose to address it--the footer, while small, took up too much space on smaller screens and was always showing. I had attempted to address this previously multiple ways (JavaScript to display footer only at page bottom, z-index tweaking, change position property), but all had issues I prefered to avoid. I decided to use JavaScript to adjust the footer's z-index only once it reached the bottom of the page (through scrolling or otherwise). This allowed for the footer to not block page content on smaller screens, but also allowed footer links to be interacted with (instead of non-functional). I was over the moon that this worked out so well. 
 
 ```javascript
 //Partially hides footer using z-index until bottom of page is reached, which adjusts z-index to allow footer links to function
@@ -418,7 +418,7 @@ window.addEventListener('scroll', function() { //Adds event listener for scroll 
 ```
 
 ### Save Scraped Results
-To round out our web-scraping functionality, this next task was to build functionality that assisted users in saving information detailed in the web-scraped or API data to the database. As my web-scraped data was the only legitamate data of the two, I opted to use that. In order to help users save tea data from their web-scraped data, I also opted to use JavaScript. First, I turned the record/row names on the Site Info table into links to the Create page. I then used JavaScript's event listener to, upon click, pull all data from that selected row into session data in JSON format. 
+To round out our web-scraping functionality, this next task was to build functionality that assisted users in saving information detailed in the web-scraped or API data to the database. As my web-scraped data was the only legitimate data of the two, I opted to use that. In order to help users save tea data from their web-scraped data, I also opted to use JavaScript. First, I turned the record/row names on the Site Info table into links to the Create page. I then used JavaScript's event listener to, upon click, pull all data from that selected row into session data in JSON format. 
 
 ```javascript
 //Uses cell positioning to return all row values for the selected (clicked-on) items as a JSON object
@@ -492,7 +492,7 @@ def get_adjectives(text, word1, word2, word3, word4, word5, window=8):
     return set(adjectives) #Return adjectives list
 ```
 
-Additonally, I submitted a Bug Fix as part of this ticket as well. I had noticed that a specific Project link was being overwritten by an App-specific one. I made the fix, while maintaining functionality in the other app. It turns out 3 other Apps had made the same mistake, so I addressed the issue in all problematic locations. 
+Additionally, I submitted a Bug Fix as part of this ticket as well. I had noticed that a specific Project link was being overwritten by an App-specific one. I made the fix, while maintaining functionality in the other app. It turns out 3 other Apps had made the same mistake, so I addressed the issue in all problematic locations. 
 
 ### Future Improvements
 - In attempting to add measurement labels (mg, %, minutes) to my Crispy Form, I added helptext to my models and had help_text_inline enabled on my Forms, but it doesn't always work. I'd like to find a more foolproof solution for this.
@@ -501,7 +501,7 @@ Additonally, I submitted a Bug Fix as part of this ticket as well. I had noticed
 - While the Search functionality is solid, it only functions on Table View. Hiding it in JSON/List Views would be an improvement. 
 
 ## Conclusion
-The Teas App is an intuitive and data-driven website featuring many technologies to provide a quick and useful tool for listing and learning about new teas. Throughout the project, I became very familiar with the routines and responsibilities expected of a professional full-stack software developer, and I executed those responsibilities daily. To me, this project taught how to research, understand, and execute in order to accomplish technical goals; multiple technologies showcased in this project were entirely new to me: web-scraping, API integration, preloading fields, sorting, view-switching, search functionality, etc. At times, it was challenging, but I always managed to figure out the problem blocking my path (and there were many). Honestly, it was exhilirating to solve problems and develop functional code that met users' needs. 
+The Teas App is an intuitive and data-driven website featuring many technologies to provide a quick and useful tool for listing and learning about new teas. Throughout the project, I became very familiar with the routines and responsibilities expected of a professional full-stack software developer, and I executed those responsibilities daily. To me, this project taught how to research, understand, and execute in order to accomplish technical goals; multiple technologies showcased in this project were entirely new to me: web-scraping, API integration, preloading fields, sorting, view-switching, search functionality, etc. At times, it was challenging, but I always managed to figure out the problem blocking my path (and there were many). Honestly, it was exhilarating to solve problems and develop functional code that met users' needs. 
 
 ### Key Learning and Challenges
 - __Research & Self-Learning__: Perhaps my most significant takeaway from this project is the understanding that nearly anything is within reach if you know how to research, find the answers you need, and continue learning. More than half of the undertakings I implemented were concepts I had no previous experience writing code for. When faced with unfamiliar tasks, I learned to research and import libraries, read documentation and online resources, and utilize tools to fully realize my vision; the value of this, to me, is beyond measure. 
@@ -514,9 +514,9 @@ The Teas App is an intuitive and data-driven website featuring many technologies
     - Preloading Fields/SessionData Uploading: I learned to use JavaScript to save specified data to SessionStorage and then load that data into preloaded fields with the same name on a different page (while clearing the session data to avoid future confusion).
     - TextBlob: Using the TextBlob library, I learned to use NLP principles to preload a field with useful, appropriate and context-specific content.
 - __Adhered to Development within Scrum Framework__: As I have previous experience working within a Scrum Framework, practices like team stand-ups, retrospectives, sprints, and time management, were not new to me. Joining that Framework as a developer, on the other hand, was a novel experience as was tracking code changes with Azure DevOps tickets, but the adjustment was very quick and smooth. 
-- __Planning Before Development__: This project showcased the necessity of planning before coding. Fully reading through the documentation at the start helped me adhere to naming conventions, understand projects requirements and code expectations, and allowed me to seamlessly integrate into an ongoing development environment without issue. Reviewing user stories in advance (especially on connected tickets) enhanced my understanding of project direction, which minimized mistakes and rework and ensured my time be best utilized. 
-- __Version Control__: While I had used Git for version control before, I'd never utilized it within a structured development workflow. After this project, I feel quite proficient at the process (checking out branches, commiting, pushing, linking branches to tickets, making pull requests, commenting, enacting best practices, etc.). When making changes on the aforementioned bug-fix, for example, I used a test branch before hearing back if it would be approved by the project coordinator. 
+- __Planning Before Development__: This project showcased the necessity of planning before coding. Fully reading through the documentation at the start helped me adhere to naming conventions, understand project requirements and code expectations, and allowed me to seamlessly integrate into an ongoing development environment without issue. Reviewing user stories in advance (especially on connected tickets) enhanced my understanding of project direction, which minimized mistakes and rework and ensured my time be best utilized. 
+- __Version Control__: While I had used Git for version control before, I'd never utilized it within a structured development workflow. After this project, I feel quite proficient at the process (checking out branches, committing, pushing, linking branches to tickets, making pull requests, commenting, enacting best practices, etc.). When making changes on the aforementioned bug-fix, for example, I used a test branch before hearing back if it would be approved by the project coordinator. 
 - __Full-Stack Web Development__: While not my first experience with creating Django webapps, this was certainly the most in-depth; I feel significantly improved (in both confidence and proficiency) by the level of practical knowledge gained from this project. Seamlessly tying together visually engaging and responsive front-end designs (with HTML, CSS, Bootstrap, and JavaScript) and powerfully functional back-end Django elements and functions (models, database management, forms, routing, and views) has really opened my eyes as to what's possible in web development.
 - __Problem Solving and Debugging__: When I say this project was a learning experience, it's a generous way of saying that hurdles, barriers, hiccups, and challenges were my bread and butter throughout. During this project, debugging became my strongest skill; I learned to systematically navigate through all sorts of issues. I discovered that error messaging, handling, and logging greatly assist in troubleshooting, that non-stop testing is especially beneficial for pinpointing trouble spots, and that iterative development allowed me to hone my vision until it was just right. In fact, debugging in this project has redefined how I write code--my code creation and testing processes are now tightly interlocked and incremental. Every new potentially-problematic feature output is either printed to the console (for back-end) or run through the Chrome Developer Tools (for front-end) first. I spent too much time looking for my output when faulty regex was the culprit, for example. If I can avoid wasting time (and headaches) searching for bugs, without a doubt I'm going to. 
 
-_Jump To_: [Project Overview](#Project-Overview), [Key Features](#Key-Features), [Basic App Structure & Front-End Work](#Basic-App-Structure-&-Front-End-Work), [Model Creation](#Model-Creation), [Display All Items](#Display-All-Items), [Details, Edit, And Delete Functions](#Details,-Edit,-And-Delete-Functions), [API (Connect & Parse)](#API-(Connect-&-Parse)), [BeautifulSoup](#BeautifulSoup), [Front-End Improvements](#Front-End-Improvements), [Save Scraped Results](#Save-Scraped-Results), [TextBlob & BugFix](#TextBlob-&-BugFix), [Future Improvements](#Future-Improvements), [Conclusion](#Conclusion)
+_Jump To_: [Project Overview](#project-overview), [Key Features](#key-features), [Basic App Structure & Front-End Work](#basic-app-structure--front-end-work), [Model Creation](#model-creation), [Display All Items](#display-all-items), [Details, Edit, And Delete Functions](#details-edit-and-delete-functions), [API (Connect & Parse)](#api-connect--parse), [BeautifulSoup](#beautifulsoup), [Front-End Improvements](#front-end-improvements), [Save Scraped Results](#save-scraped-results), [TextBlob & BugFix](#textblob--bugfix), [Future Improvements](#future-improvements), [Conclusion](#conclusion)
