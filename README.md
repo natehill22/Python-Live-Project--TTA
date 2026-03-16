@@ -1,7 +1,7 @@
 # Python Live Project (The Tech Academy)
 
 ## Project Overview
-__Role__: Full-Stack Developer
+__Role__: Full-Stack Developer  
 __Tech Stack__: Django, Python, JavaScript, HTML/CSS, Bootstrap, Crispy Forms, BeautifulSoup, Regex, TextBlob
 
 The Teas App is a desktop web application that assists users in documenting, listing, managing, and rating their own collection of different types of teas. Primarily accomplished through a solid foundation in CRUD functionality, the app allows users to manage database operations (add, edit, view, sort, delete) through the webapp interface. Additionally, it allows users to search through both web-scraped site data and API returned data (in several different views) and preloads selected rows' data onto the create page to ease in record creation. 
@@ -398,7 +398,7 @@ def tea_site_info(request):
 ```
 
 ### Front-End Improvements
-The next task was to update the Front-End aspects of the site, but as I had built the site to be visually appealing, readable, responsive, and user-friendly (keeping design elements consistent with each ticket), there was little left to do. However, there was a design issue that bothered me, and I chose to address it--the footer, while small, took up too much space on smaller screens and was always showing. I had attempted to address this previously multiple ways (JavaScript to display footer only at page bottom, z-index tweaking, change position property), but all had issues I prefered to avoid. I decided to use JavaScript to adjust the footer's z-index only once it reached the bottom of the page (through scrolling or otherwise). This allowed for the footer to not block page content on smaller screens, but also allowed footer links to be interacted with (instead of non-functional). I was over the moon that this worked out so well. 
+The next task was to update the Front-End aspects of the site, but as I had built the site to be visually appealing, readable, responsive, and user-friendly (keeping design elements consistent with each ticket), there was little left to do. However, there was a design issue that bothered me, and I chose to address it here--the footer, while small, took up too much space on smaller screens and was always showing. I had attempted to address this previously multiple ways (JavaScript to display footer only at page bottom, z-index tweaking, change position property), but all had significant issues I prefered to avoid. I decided to use JavaScript to adjust the footer's z-index only once it reached the bottom of the page (through scrolling or otherwise). This allowed for the footer to not block page content on smaller screens, but also allowed footer links to be interacted with (instead of non-functional). I was over the moon that this worked out so well. 
 
 ```javascript
 //Partially hides footer using z-index until bottom of page is reached, which adjusts z-index to allow footer links to function
@@ -466,7 +466,7 @@ window.addEventListener('beforeunload', function() {
 ![Site Page with Create page preloads image](images/NHill-LP-Site-Create-load.gif)
 
 ### TextBlob & BugFix
-The final ticket was optional and concerned adding additional desired features, if approved. I really wanted to experiment with the TextBlob library, which simplifies NLP (Natural Language Processing) tasks. This could allow me to pull adjectives surrounding specific target words (like tea or flavor) from the web-scraped Description field, essentially giving me Flavor Profile values that I could then preload also (as there was no way this could be achieved with regex). I had to increase the number of target words to 5 (to avoid significant empty fields) and work out some issues, but it worked beautifully and I loved that I got the chance to experiment with (and learn) this.
+The final ticket was optional and concerned adding additional desired features, if approved. I really wanted to experiment with the TextBlob library, which simplifies NLP (Natural Language Processing) tasks. This could allow me to pull adjectives surrounding specific target words (like tea or flavor) from the web-scraped Description field, essentially giving me Flavor Profile values that I could then preload also (as there was no way this could be achieved with regex). I had to increase the number of target words to 5 (to avoid significant empty fields) and work out some issues, but it worked beautifully and I loved that I got the chance to use (and learn) this.
 
 ```python
 #Used to return search out adjectives within a window of specific trigger words (in the description) to fill out the flavor_profile column content
@@ -505,14 +505,14 @@ The Teas App is an intuitive and data-driven website featuring many technologies
 
 ### Key Learning and Challenges
 - __Research & Self-Learning__: Perhaps my most significant takeaway from this project is the understanding that nearly anything is within reach if you know how to research, find the answers you need, and continue learning. More than half of the undertakings I implemented were concepts I had no previous experience writing code for. When faced with unfamiliar tasks, I learned to research and import libraries, read documentation and online resources, and utilize tools to fully realize my vision; the value of this, to me, is beyond measure. 
-    - API Integration: I learned how to integrate an external API, send GET requests, handle and manipulate JSON responses into several different contexts to be displayed.  
-    - Web-Scraping: Using the BeautifulSoup library taught me how to effectively scrape data from external websites, extract and reformat the data, and integrate it in several different contexts to be displayed.
-    - Regex: I learned to use regex to extract text following certain patterns and then reformed those extractions into JSON dictionaries.
-    - View-Switching: I learned how to use those aforementioned reformatted contexts to display (and hide) the same data in different formats all controlled by an intuitive user-friendly button.
-    - Search Functionality: Using the table views above, I built out the ability to return any rows containing a "searched for" word and enhanced the functionality through JavaScript code.  
-    - Sorting: I taught myself how to enable a sort functionality on a database table that would return all data in ascending (alphabetical) or descending (reverse) order based on previous clicks on the column header. 
-    - Preloading Fields/SessionData Uploading: I learned to use JavaScript to save specified data to SessionStorage and then load that data into preloaded fields with the same name on a different page (while clearing the session data to avoid future confusion).
-    - TextBlob: Using the TextBlob library, I learned to use NLP principles to preload a field with useful, appropriate and context-specific content.
+    - _API Integration_: I learned how to integrate an external API, send GET requests, handle and manipulate JSON responses into several different contexts to be displayed.  
+    - _Web-Scraping_: Using the BeautifulSoup library taught me how to effectively scrape data from external websites, extract and reformat the data, and integrate it in several different contexts to be displayed.
+    - _Regex_: I learned to use regex to extract text following certain patterns and then reformed those extractions into JSON dictionaries.
+    - _View-Switching_: I learned how to use those aforementioned reformatted contexts to display (and hide) the same data in different formats all controlled by an intuitive user-friendly button.
+    - _Search Functionality_: Using the table views above, I built out the ability to return any rows containing a "searched for" word and enhanced the functionality through JavaScript code.  
+    - _Sorting_: I taught myself how to enable a sort functionality on a database table that would return all data in ascending (alphabetical) or descending (reverse) order based on previous clicks on the column header. 
+    - _Preloading Fields/SessionData Uploading_: I learned to use JavaScript to save specified data to SessionStorage and then load that data into preloaded fields with the same name on a different page (while clearing the session data to avoid future confusion).
+    - _TextBlob_: Using the TextBlob library, I learned to use NLP principles to preload a field with useful, appropriate and context-specific content.
 - __Adhered to Development within Scrum Framework__: As I have previous experience working within a Scrum Framework, practices like team stand-ups, retrospectives, sprints, and time management, were not new to me. Joining that Framework as a developer, on the other hand, was a novel experience as was tracking code changes with Azure DevOps tickets, but the adjustment was very quick and smooth. 
 - __Planning Before Development__: This project showcased the necessity of planning before coding. Fully reading through the documentation at the start helped me adhere to naming conventions, understand project requirements and code expectations, and allowed me to seamlessly integrate into an ongoing development environment without issue. Reviewing user stories in advance (especially on connected tickets) enhanced my understanding of project direction, which minimized mistakes and rework and ensured my time be best utilized. 
 - __Version Control__: While I had used Git for version control before, I'd never utilized it within a structured development workflow. After this project, I feel quite proficient at the process (checking out branches, committing, pushing, linking branches to tickets, making pull requests, commenting, enacting best practices, etc.). When making changes on the aforementioned bug-fix, for example, I used a test branch before hearing back if it would be approved by the project coordinator. 
